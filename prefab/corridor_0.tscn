@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bue1o1c2vlwe0"]
+
+[ext_resource type="PackedScene" uid="uid://ca5sddjaxg4lp" path="res://extern/obj/corridor_0.glb" id="1_kih4x"]
+[ext_resource type="PackedScene" uid="uid://cidsryj1ow7sn" path="res://extern/obj/corridor_0_col.glb" id="2_2l53d"]
+
+[node name="corridor_0" instance=ExtResource("1_kih4x")]
+
+[node name="corridor_0_collision" parent="." index="10" instance=ExtResource("2_2l53d")]

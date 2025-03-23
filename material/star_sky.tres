@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://2sw0aqogjyoh"]
+
+[ext_resource type="Shader" uid="uid://chdlw4tnj1kou" path="res://shader/star_sky.gdshader" id="1_mbs2i"]
+
+[resource]
+shader = ExtResource("1_mbs2i")
+shader_parameter/stars = PackedVector3Array()
+shader_parameter/star_count = 0

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://w2myjalh5so3"]
+
+[ext_resource type="PackedScene" uid="uid://dlvtjcq7dqgax" path="res://prefab/ui/button.tscn" id="1_kq33h"]
+[ext_resource type="PackedScene" uid="uid://dv0b1jymulp3n" path="res://prefab/ui/lever.tscn" id="2_xsii3"]
+
+[node name="door_controls" type="Node3D"]
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0470694, 0.0867211, 0)
+pixel_size = 0.001
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+modulate = Color(0.86, 0.2408, 0.2408, 1)
+text = "Manual
+Override"
+outline_size = 0
+
+[node name="button" parent="." instance=ExtResource("1_kq33h")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0493391, 0, 0)
+toggle = true
+
+[node name="lever" parent="." instance=ExtResource("2_xsii3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0809133, 0.0559992, 0)

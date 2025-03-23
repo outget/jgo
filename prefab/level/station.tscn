@@ -1,0 +1,73 @@
+[gd_scene load_steps=13 format=3 uid="uid://cocsdxag14ci4"]
+
+[ext_resource type="Script" uid="uid://dnt0efmeptg7x" path="res://script/Game.cs" id="1_e71ql"]
+[ext_resource type="Material" uid="uid://2sw0aqogjyoh" path="res://material/star_sky.tres" id="2_5h1dx"]
+[ext_resource type="PackedScene" uid="uid://ie4prxjlq0yg" path="res://prefab/player.tscn" id="3_5p0ka"]
+[ext_resource type="PackedScene" uid="uid://bksnk6edlryb1" path="res://prefab/airlock.tscn" id="4_hm6m8"]
+[ext_resource type="PackedScene" uid="uid://bue1o1c2vlwe0" path="res://prefab/corridor_0.tscn" id="5_o8nnc"]
+[ext_resource type="PackedScene" uid="uid://dqsfyw3vsm0h0" path="res://prefab/hangar.tscn" id="5_rkent"]
+[ext_resource type="PackedScene" uid="uid://dcj25s6eaw6sm" path="res://prefab/corridor_left_access.tscn" id="6_4j41c"]
+[ext_resource type="PackedScene" uid="uid://bdt8xf3bmrq30" path="res://prefab/corridor_t_junction.tscn" id="6_as7ws"]
+[ext_resource type="PackedScene" uid="uid://dotqpbngrjbmp" path="res://prefab/storage_engineerin.tscn" id="6_y8dn8"]
+[ext_resource type="PackedScene" uid="uid://dsjk5twqq3gnp" path="res://prefab/control_room.tscn" id="7_xj53x"]
+
+[sub_resource type="Sky" id="Sky_rtq33"]
+sky_material = ExtResource("2_5h1dx")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_aumvy"]
+background_mode = 2
+sky = SubResource("Sky_rtq33")
+
+[node name="station" type="Node3D"]
+script = ExtResource("1_e71ql")
+skybox_material = ExtResource("2_5h1dx")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_aumvy")
+
+[node name="Player" parent="." instance=ExtResource("3_5p0ka")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15333, 0)
+
+[node name="airlock" parent="." instance=ExtResource("4_hm6m8")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0, 4)
+
+[node name="hangar" parent="." instance=ExtResource("5_rkent")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0, -1)
+
+[node name="storage_engineerin" parent="." instance=ExtResource("6_y8dn8")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 0, -1)
+
+[node name="control_room" parent="." instance=ExtResource("7_xj53x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 13)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.654464, 0.597657, -0.463123, -2.68396e-09, 0.612521, 0.790454, 0.756093, 0.517324, -0.400873, 0.359812, 5.60742, 0)
+light_color = Color(0.994343, 0.78881, 0.683651, 1)
+light_energy = 0.05
+shadow_enabled = true
+
+[node name="main_corrdior" type="Node3D" parent="."]
+
+[node name="corridor_t_junction" parent="main_corrdior" instance=ExtResource("6_as7ws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="corridor_left_access" parent="main_corrdior" instance=ExtResource("6_4j41c")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 4)
+
+[node name="corridor_1" parent="main_corrdior" instance=ExtResource("5_o8nnc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="corridor_3" parent="main_corrdior" instance=ExtResource("5_o8nnc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="corridor_4" parent="main_corrdior" instance=ExtResource("5_o8nnc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="corridor_5" parent="main_corrdior" instance=ExtResource("5_o8nnc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="main_corrdior"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03837, 2.66156)
+light_color = Color(0.937255, 0.752941, 0.439216, 1)
+shadow_enabled = true

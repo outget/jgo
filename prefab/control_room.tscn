@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsjk5twqq3gnp"]
+
+[ext_resource type="PackedScene" uid="uid://6kvfgmgdyy31" path="res://extern/obj/control_room.glb" id="1_0y13s"]
+[ext_resource type="PackedScene" uid="uid://bdwf8g045uehs" path="res://prefab/corridor_door.tscn" id="2_yjts3"]
+[ext_resource type="PackedScene" uid="uid://cnjfpg7sf8t4g" path="res://extern/obj/control_room_col.glb" id="3_ynua7"]
+
+[node name="control_room" instance=ExtResource("1_0y13s")]
+
+[node name="corridor_door" parent="corridor_door_002" index="0" instance=ExtResource("2_yjts3")]
+
+[node name="control_room_col" parent="." index="35" instance=ExtResource("3_ynua7")]
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." index="36"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.91581, 2.10511, -1.56959)
+light_color = Color(0.937255, 0.752941, 0.439216, 1)
+shadow_enabled = true
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="." index="37"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.53739, 1.39059, 1.29669)
+light_color = Color(0.937255, 0.752941, 0.439216, 1)
+shadow_enabled = true
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="." index="38"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9638, 1.39059, 1.29669)
+light_color = Color(0.937255, 0.752941, 0.439216, 1)
+shadow_enabled = true

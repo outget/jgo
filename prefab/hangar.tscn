@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqsfyw3vsm0h0"]
+
+[ext_resource type="PackedScene" uid="uid://nr2dc68tfayj" path="res://extern/obj/hangar.glb" id="1_hyvoy"]
+[ext_resource type="PackedScene" uid="uid://bdwf8g045uehs" path="res://prefab/corridor_door.tscn" id="2_74yyk"]
+[ext_resource type="PackedScene" uid="uid://dq33182840jsw" path="res://extern/obj/hangar_col.glb" id="2_urpvg"]
+[ext_resource type="PackedScene" uid="uid://cxyn21r3e0big" path="res://prefab/hangar_door.tscn" id="3_nr7ub"]
+
+[node name="hangar" instance=ExtResource("1_hyvoy")]
+
+[node name="corridor_door" parent="corridor_door" index="0" instance=ExtResource("2_74yyk")]
+
+[node name="hangar_door" parent="hangar_door" index="0" instance=ExtResource("3_nr7ub")]
+
+[node name="hangar_col" parent="." index="37" instance=ExtResource("2_urpvg")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="38"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25147, 0.518329)
+light_color = Color(0.937255, 0.752941, 0.439216, 1)
+shadow_enabled = true
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." index="39"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.965935, 1.64593, -2.48167)
+light_color = Color(0.937255, 0.752941, 0.439216, 1)
+shadow_enabled = true
