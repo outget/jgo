@@ -1,0 +1,91 @@
+[gd_scene load_steps=12 format=3 uid="uid://nnswbsl2stdg"]
+
+[ext_resource type="Script" uid="uid://buu035bxshore" path="res://script/Ship.cs" id="1_andsp"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_owshx"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_andsp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_owshx"]
+
+[sub_resource type="Sky" id="Sky_andsp"]
+sky_material = SubResource("ProceduralSkyMaterial_owshx")
+
+[sub_resource type="Environment" id="Environment_fouyv"]
+background_mode = 2
+background_energy_multiplier = 2.11
+sky = SubResource("Sky_andsp")
+ambient_light_source = 3
+ambient_light_color = Color(0.912289, 0.912289, 0.912289, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fouyv"]
+frequency = 0.0326
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fouyv"]
+width = 515
+noise = SubResource("FastNoiseLite_fouyv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yx515"]
+albedo_color = Color(0.239834, 0.823366, 0.539423, 1)
+albedo_texture = SubResource("NoiseTexture2D_fouyv")
+
+[sub_resource type="BoxMesh" id="BoxMesh_fouyv"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_yx515")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_andsp"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[node name="vehicle" type="Node3D"]
+
+[node name="ship" type="RigidBody3D" parent="." node_paths=PackedStringArray("velocityLabel", "angularLabel", "angularDampLabel")]
+gravity_scale = 0.0
+script = ExtResource("1_andsp")
+velocityLabel = NodePath("../CanvasLayer/Velocity")
+angularLabel = NodePath("../CanvasLayer/AngVelocity")
+angularDampLabel = NodePath("../CanvasLayer/AngDamp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ship"]
+shape = SubResource("ConvexPolygonShape3D_owshx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ship"]
+mesh = SubResource("BoxMesh_andsp")
+skeleton = NodePath("../..")
+
+[node name="Camera3D" type="Camera3D" parent="ship"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.855373, 0.42069)
+current = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fouyv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 16.4151, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Velocity" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="AngVelocity" type="Label" parent="CanvasLayer"]
+offset_top = 23.0
+offset_right = 40.0
+offset_bottom = 46.0
+
+[node name="AngDamp" type="Label" parent="CanvasLayer"]
+offset_top = 46.0
+offset_right = 40.0
+offset_bottom = 69.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, -69.2332)
+mesh = SubResource("BoxMesh_fouyv")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, -69.2332)
+shape = SubResource("ConvexPolygonShape3D_andsp")
